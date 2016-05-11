@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册_ZOL商城</title>
+    <link rel="stylesheet" href="css/login.css">
+<style>
+body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr{margin:0;padding:0;}
+a{text-decoration: none;color:#134ba0;}
+body{font:12px/1.5 Arial; color:#333;}
+select,input,button{vertical-align:middle;font-size:100%;}
+ul,ol{list-style:none;}
+fieldset,img{border:0;}
+em{font-style:normal;}
+.clearfix:after{content:"."; display: block; visibility: hidden; clear: both; height:0; font-size:0}
+.clearfix{*zoom:1}
+.wrapper{width:990px;margin:0 auto;}
+.header{padding-top:14px;padding-bottom:20px;}
+.login-bar{float:right;padding:21px 0 0;font-size:14px;line-height:22px;}
+.login-bar a{float:right;height: 16px;padding:3px 10px;color:#c00;font:normal 14px/14px Arial;}
+.login-bar a:hover{background:#c00;color:#fff;}
+.logo{float:left;}
+.header .logo a{float:left;}
+.header .logo a img{float:left;}
+.header .logo p{float:left;margin:8px 0 0 8px;padding-left:10px;font:14px/44px Arial;border-left:1px solid #e6e6e6;cursor:pointer;color:#666;}
+.login{padding:0 0 100px;border:1px solid #e6e6e6;width:980px;margin:0 auto;}
+.login .title{padding:16px 0 16px 90px;background:#fafafa;font-size:18px;line-height: 28px;color:#999;}
+.register-module{float:left;padding:30px 0 0 89px;width:500px;}
+.register-tab{height:39px;border-bottom:1px solid #e6e6e6;}
+.register-tab .current{border-top:2px solid #e02d2d;background:#fff;padding:0 0 2px;}
+.register-tab li{float:left;position:relative;width:250px;border:1px solid #e6e6e6;border-bottom:0 none;text-align:center;}
+.register-tab .current .phone-number{background:url(../images/login-bg.png)no-repeat;background-position: -158px -235px;font-size:18px;padding:0 0 0 20px;}
+.register-tab .current span{color:#c00;line-height: 36px;display: inline-block;}
+.register-phone-number{padding:30px 0 0;}
+.register-phone-number input{border:none;outline:none;}
+.register-form{position:relative;margin:0 0 42px;padding:0 0 0 83px;}
+.register-form .label{position:absolute;top:0;left:0;width:83px;font:14px/40px Arial;text-align: center;color: #666;}
+.register-form .label .xh{padding:0 7px 0 0;font-size:12px;color:#f30;}
+.register-form .text{display: block;margin:0 10px 0 0;padding:8px 5px;width:278px;height:22px;border:1px solid #ccc;}
+
+.register-form .right-tips{display:none;position:absolute;top:12px;left:383px;width:15px;height:15px;background: url(../images/login-bg.png)no-repeat;background-position:-155px -162px;}
+.register-form .wrong-tips{display:none;position:absolute;top:0;left:383px;padding:0 0 0 20px;font:12px/40px Arial;color:#ff3333;background:url(../images/login-bg.png)no-repeat;background-position:-155px -184px;}
+.register-form .tips{position:absolute;top:47px;left:83px;color:#aaa;}
+.yzmimg,.yzmimg2{width:98px;height:38px;display:block;border:1px solid #ccc;float:left;margin:0 10px 0 0;line-height:38px;text-align:center;font-size:30px;cursor:pointer;}
+.yzm .text,.yzphone .text{float:left;width:158px;}
+#zc3{color:#ccc;}
+.agree{display: block;padding:0 0 0 83px;font:12px/32px Arial;color:#999;}
+.agree a{color:#3029db;text-decoration:none;}
+.agree a:hover{color:#ff3333;text-decoration: underline;}
+.reginbtn{margin:20px 0 0 83px;width:290px;height:40px;color: #fff;background:#DD2F2F;border:0;font:bold 14px/40px Arial;cursor: pointer;outline:none;}
+.reginbtn:hover{background:#C61F1F;}
+.fast-login{float:right;margin:30px 0 0;padding:0 80px 0 25px;width:170px;border-left:1px solid #f5f5f5;}
+.fast-login p{font:12px/24px Arial;color:#666;}
+.fast-login p a{margin:0 6px;}
+.fast-login p a:hover{color:#ff3333;text-decoration: underline;}
+.fast-login-list a{display: block;margin:15px 0 0;width:170px;height:36px;overflow: hidden;background: url(../images/login-bg.png)no-repeat;}
+.fast-login-list .sina{background-position:0 0;}
+.fast-login-list .qq{background-position:0 -37px;}
+.fast-login-list .alipay{background-position:0 -74px;}
+.fast-login-list .baidu{background-position:0 -111px;}
+.fast-login-list a:hover{opacity:0.7;}
+
+
+.footer{margin:50px 0 0;padding:12px 0 25px;border-top:1px solid #dcdcdc;}
+.footer .about{float:left;color:#ccc;}
+.footer .about a{margin:0 10px;color: #666;}
+.footer .about a:hover{color:#ff3333;text-decoration: underline;}
+.footer .copyright{float:right;color:#666;}
+
+</style>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/login.js"></script>
+   <script>
+$(function () {
+    //获取随机数
+    function random(min, max) {
+        return parseInt(Math.random() * (max - min + 1)) + min;
+    }
+    var result = '';
+    for (var i = 0; i < 4; i++) {
+        result += random(0, 9);
+    }
+    $('.yzmimg').html(result);
+    //点击改变验证码
+    $('.yzmimg').click(function () {
+        var result = '';
+        for (var i = 0; i < 4; i++) {
+            result += random(0, 9);
+        }
+        $('.yzmimg').html(result);
+    })
+
+    //获取焦点边框变红 
+    $('#zc1,#zc2,#zc4,#zc5').focus(function () {
+        $(this).css('border-color', 'red');
+    })
+    var t1=false;
+    var t2=false;
+    var t3=false;
+    var t4=false;
+    
+    $('#zc1').blur(function () {
+
+        $(this).css('border-color', '');
+        var reg = /^(13[0-9]|15[0|3|6|7|8|9]|18[0,5-9])\d{8}$/;
+        var zc1 = document.getElementById('zc1').value;
+        console.log(zc1);
+        if (!reg.test(zc1)) {
+            $('#zcphone>.wrong-tips').css('display', 'block');
+            $('#zcphone>.right-tips').css('display', 'none');
+            t1=false;
+        } else {
+            $('#zcphone>.wrong-tips').css('display', 'none');
+            $('#zcphone>.right-tips').css('display', 'block');
+            t1=true;
+        }
+    })
+    $('#zc2').blur(function () {
+        $(this).css('border-color', '');
+        var zc2 = document.getElementById('zc2').value;
+        console.log(zc2);
+        if (zc2 != result) {
+            $('#zcma1>.wrong-tips').css('display', 'block');
+            $('#zcma1>.right-tips').css('display', 'none');
+            t2=false;
+        } else {
+            $('#zcma1>.wrong-tips').css('display', 'none');
+            $('#zcma1>.right-tips').css('display', 'block');
+            t2=true;
+        }
+    })
+    $('#zc4').blur(function () {
+        $(this).css('border-color', '');
+        var reg = /[0-9 | A-Z | a-z]{6,16}/;//-----------------------------------------------问题
+        var zc4 = document.getElementById('zc4').value;
+        if (!reg.test(zc4)) {
+            $('#zcpsw>.wrong-tips').css('display', 'block');
+            $('#zcpsw>.right-tips').css('display', 'none');
+            t3=false;
+        } else {
+            $('#zcpsw>.wrong-tips').css('display', 'none');
+            $('#zcpsw>.right-tips').css('display', 'block');
+            t3=true;
+        }
+    })
+    $('#zc5').blur(function(){
+        var zc4=document.getElementById('zc4').value;
+        var zc5=document.getElementById('zc5').value;
+        //console.log(zc4);
+        //console.log(zc5);
+        if(zc4==zc5&&zc5!=''){
+            $('#zcapsw>.right-tips').css('display', 'block');
+            $('#zcapsw>.wrong-tips').css('display', 'none');
+            t4=true;
+        }else{
+            $('#zcapsw>.right-tips').css('display', 'none');
+            $('#zcapsw>.wrong-tips').css('display', 'block');
+            t4=false;
+        }
+    })
+    $('#reginbtn').click(function(){
+       if(t1&&t2&&t3&&t4){
+           var name=$('#zc1').val();
+           var password=$('#zc4').val();
+           $.cookie('name',name);
+           $.cookie('password',password);
+           window.location.href="index.html";
+       }
+    })
+    
+
+
+
+
+
+
+})
+
+
+
+</script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header clearfix">
+            <div class="login-bar">
+                <a href="">立即登录</a>
+                已经有ZOL商城账号？
+            </div>
+            <div class="logo">
+                <a href="">
+                    <img src="images/shop_182x60.png" alt="">
+                    <p>中关村在线旗下网上商城</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="login clearfix">
+        <div class="title">30秒快速注册，加入ZOL商城</div>
+        <form action="">
+            <div class="register-module">
+                <ul class="register-tab clearfix">
+                    <li class="current">
+                        <span class="phone-number">用手机号注册</span>
+                    </li>
+                </ul>
+                <div class="register-phone-number">
+                    <div class="register-form" id="zcphone">
+                        <div class="label">
+                            <em class="xh">*</em>手机号：
+                        </div>
+                        <input type="text" class="text" id="zc1" value="">
+                        <i class="right-tips"></i>
+                        <i class="wrong-tips">请填写正确手机号</i>
+                        <div class="tips">请填写手机号码</div>
+                    </div>
+                    <div class="register-form" id="zcma1">
+                        <div class="label">
+                            <em class="xh">*</em>验证码：
+                        </div>
+                        <div class="yzm clearfix">
+                            <input type="text" class="text"  id="zc2">
+                            <span class="yzmimg"></span>
+                        </div>
+                        <i class="right-tips"></i>
+                        <i class="wrong-tips">请填写验证码</i>
+                        <div class="tips">请填写图片验证码</div>
+                    </div>
+                    <div class="register-form" id="zcma2">
+                        <div class="label">
+                            <em class="xh">*</em>验证码：
+                        </div>
+                        <div class="yzphone clearfix">
+                            <input type="text" class="text" readonly="readonly" id="zc3" value="手机获取验证码">
+                            <span class="yzmimg2"></span>
+                        </div>
+<!--
+                        <i class="right-tips"></i>
+                        <i class="wrong-tips">请填写验证码</i>
+-->
+                        <div class="tips">请填写手机号码，然后点击[获取验证码]</div>
+                    </div>
+                    <div class="register-form" id="zcpsw">
+                        <div class="label">
+                            <em class="xh">*</em>密码：
+                        </div>
+                        <input type="password" class="text"  id="zc4">
+                        <i class="right-tips"></i>
+                        <i class="wrong-tips">请填写密码</i>
+                        <div class="tips">6-16位字母和数字的组合，不可用特殊字符</div>
+                    </div>
+                    <div class="register-form" id="zcapsw">
+                        <div class="label">
+                            <em class="xh">*</em>确认密码：
+                        </div>
+                        <input type="text" class="text"  id="zc5">
+                        <i class="right-tips"></i>
+                        <i class="wrong-tips">请填写确认密码</i>
+                        <div class="tips">再次输入密码</div>
+                    </div>
+                    <label for="agreeme" class="agree">
+                        <input type="checkbox" id="agreeme" checked/>同意
+                        <a href="">《商城用户协议》</a>
+                        <a href="">《隐私权说明》</a>
+                    </label>
+                    <input type="button" value="注册" class="reginbtn" id="reginbtn">
+                </div>
+            </div>
+        </form>
+        <div class="fast-login">
+            <p>如果您已经注册，请<a href="">直接登录</a>或者用以下方式登录：</p>
+            <div class="fast-login-list">
+                <a href="" class="sina"></a>
+                <a href="" class="qq"></a>
+                <a href="" class="alipay"></a>
+                <a href="" class="baidu"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wrapper clearfix">
+            <div class="about">
+                <a href="">关于ZOL商城</a>|<a href="">联系我们</a>|<a href="">帮助中心</a>
+            </div>
+            <div class="copyright">©2016. 中关村在线 版权所有</div>
+        </div>
+    </div>
+</body>
+</html>
